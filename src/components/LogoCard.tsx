@@ -2,17 +2,48 @@ import type { LogoEntry } from '@/types/logo';
 import { CATEGORY_COLORS } from '@/types/logo';
 import LogoMark from './LogoMark';
 
-export default function LogoCard({ entry }: { entry: LogoEntry }) {
+interface LogoCardProps {
+  entry: LogoEntry;
+  index?: number;
+}
+
+export default function LogoCard({ entry, index = 0 }: LogoCardProps) {
   return (
-    <div className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-default">
-      <LogoMark entry={entry} />
-      <div className="text-center">
-        <p className="font-semibold text-[var(--foreground)] text-sm leading-tight">{entry.nameKo}</p>
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{entry.nameEn}</p>
+    <div
+      className="group relative flex flex-col bg-[var(--card-bg)] rounded-2xl border border-[var(--card-border)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/50 hover:border-transparent cursor-default animate-fade-up"
+      style={{ animationDelay: `${Math.min(index * 25, 400)}ms` }}
+    >
+      {/* Brand color accent bar */}
+      <div
+        className="absolute top-0 inset-x-0 h-0.5 transition-all duration-300 group-hover:h-[3px]"
+        style={{ backgroundColor: entry.brandColor }}
+        aria-hidden="true"
+      />
+
+      {/* Logo mark area */}
+      <div className="flex items-center justify-center pt-7 pb-3 px-4">
+        <div className="transition-transform duration-300 group-hover:scale-110">
+          <LogoMark entry={entry} />
+        </div>
       </div>
-      <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${CATEGORY_COLORS[entry.category]}`}>
-        {entry.category}
-      </span>
+
+      {/* Company info */}
+      <div className="px-3.5 pb-4 flex flex-col gap-2.5 mt-auto">
+        <div>
+          <p className="font-semibold text-[var(--foreground)] text-sm leading-snug truncate">
+            {entry.nameKo}
+          </p>
+          <p className="text-xs text-[var(--muted)] mt-0.5 truncate">{entry.nameEn}</p>
+        </div>
+        <div className="flex items-center justify-between gap-1">
+          <span
+            className={`text-[11px] font-medium px-2 py-0.5 rounded-full truncate ${CATEGORY_COLORS[entry.category]}`}
+          >
+            {entry.category}
+          </span>
+          <span className="text-xs text-[var(--muted)] shrink-0 tabular-nums">{entry.founded}</span>
+        </div>
+      </div>
     </div>
   );
 }
