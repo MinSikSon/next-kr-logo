@@ -1,23 +1,25 @@
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { CATEGORIES } from '@/types/logo';
-import { fetchLogos, staticLogos } from '@/lib/logos';
+import { queryLogos, staticLogos } from '@/lib/logos';
 import LogoGrid from '@/components/LogoGrid';
 
 export default async function Home() {
   let logos = staticLogos;
-  let fromD1 = false;
+  let total = staticLogos.length;
+  let hasMore = false;
 
   try {
     const { env } = await getCloudflareContext({ async: true });
     if (env.DB) {
-      const d1Logos = await fetchLogos(env.DB);
-      if (d1Logos.length > 0) {
-        logos = d1Logos;
-        fromD1 = true;
+      const result = await queryLogos(env.DB, { page: 1, limit: 48 });
+      if (result.logos.length > 0) {
+        logos = result.logos;
+        total = result.total;
+        hasMore = result.hasMore;
       }
     }
   } catch {
-    // Fall back to static data in local dev or when D1 is not available
+    // local dev — use static data
   }
 
   return (
@@ -32,19 +34,19 @@ export default async function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-9 sm:pt-14 sm:pb-12">
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 px-2.5 py-1 rounded-full mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse inline-block" />
-            {fromD1 ? 'Live Data' : 'Brand Archive'}
+            Brand Archive
           </span>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] leading-tight">
             한국 기업{' '}
             <span className="text-blue-600 dark:text-blue-400">로고 갤러리</span>
           </h1>
           <p className="text-sm sm:text-base text-[var(--muted)] mt-2.5 max-w-sm">
-            대한민국 주요 기업의 브랜드 아이덴티티를 한눈에
+            대한민국 상장 기업의 브랜드 아이덴티티를 한눈에
           </p>
           <div className="flex items-center gap-6 mt-6">
             <div>
               <span className="text-2xl sm:text-3xl font-bold text-[var(--foreground)]">
-                {logos.length}
+                {total.toLocaleString()}
               </span>
               <span className="text-xs text-[var(--muted)] ml-1.5">기업</span>
             </div>
@@ -59,7 +61,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <LogoGrid logos={logos} />
+      <LogoGrid logos={logos} total={total} hasMore={hasMore} />
     </div>
   );
 }
