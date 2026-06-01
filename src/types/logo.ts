@@ -17,6 +17,8 @@ export interface LogoEntry {
   initial: string;
   initialColor?: string;
   founded: number;
+  ticker?: string;
+  imageUrl?: string;
 }
 
 export const CATEGORIES: Category[] = [

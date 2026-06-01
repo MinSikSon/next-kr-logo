@@ -15,5 +15,18 @@
 	"observability": {
 		"enabled": true
 	},
-	"upload_source_maps": true
+	"upload_source_maps": true,
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "kr-logo-db",
+			"database_id": "fde2a82e-d1d8-4ec6-997e-2cf061ad5e5c"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "LOGOS_BUCKET",
+			"bucket_name": "kr-logo-assets"
+		}
+	]
 }

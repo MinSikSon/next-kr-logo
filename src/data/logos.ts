@@ -9,6 +9,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#1428A0',
     initial: 'S',
     founded: 1969,
+    ticker: '005930',
   },
   {
     id: 'lg-electronics',
@@ -18,6 +19,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#A50034',
     initial: 'LG',
     founded: 1958,
+    ticker: '066570',
   },
   {
     id: 'sk-hynix',
@@ -27,6 +29,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#EA0029',
     initial: 'SK',
     founded: 1983,
+    ticker: '000660',
   },
   {
     id: 'hyundai-motor',
@@ -36,6 +39,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#002C5F',
     initial: 'H',
     founded: 1967,
+    ticker: '005380',
   },
   {
     id: 'kia',
@@ -45,6 +49,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#05141F',
     initial: 'K',
     founded: 1944,
+    ticker: '000270',
   },
   {
     id: 'kakao',
@@ -55,6 +60,7 @@ export const logos: LogoEntry[] = [
     initial: 'K',
     initialColor: '#191919',
     founded: 2010,
+    ticker: '035720',
   },
   {
     id: 'naver',
@@ -64,6 +70,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#03C75A',
     initial: 'N',
     founded: 1999,
+    ticker: '035420',
   },
   {
     id: 'krafton',
@@ -73,6 +80,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#1A1A1A',
     initial: 'KR',
     founded: 2007,
+    ticker: '259960',
   },
   {
     id: 'coupang',
@@ -91,6 +99,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#ED1C24',
     initial: 'L',
     founded: 1967,
+    ticker: '004990',
   },
   {
     id: 'shinhan',
@@ -100,6 +109,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#0046FF',
     initial: '신',
     founded: 1982,
+    ticker: '055550',
   },
   {
     id: 'kb-financial',
@@ -110,6 +120,7 @@ export const logos: LogoEntry[] = [
     initial: 'KB',
     initialColor: '#1A1A1A',
     founded: 2008,
+    ticker: '105560',
   },
   {
     id: 'sk-innovation',
@@ -119,6 +130,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#EA0029',
     initial: 'SK',
     founded: 1962,
+    ticker: '096770',
   },
   {
     id: 'posco',
@@ -128,6 +140,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#005BAC',
     initial: 'P',
     founded: 1968,
+    ticker: '005490',
   },
   {
     id: 'hyundai-engineering',
@@ -137,6 +150,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#007BC0',
     initial: 'HC',
     founded: 1947,
+    ticker: '000720',
   },
   {
     id: 'samsung-heavy',
@@ -146,6 +160,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#1428A0',
     initial: 'SH',
     founded: 1974,
+    ticker: '010140',
   },
   {
     id: 'kt',
@@ -155,6 +170,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#E6001A',
     initial: 'KT',
     founded: 1981,
+    ticker: '030200',
   },
   {
     id: 'skt',
@@ -164,6 +180,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#EA0029',
     initial: 'T',
     founded: 1984,
+    ticker: '017670',
   },
   {
     id: 'celltrion',
@@ -173,6 +190,7 @@ export const logos: LogoEntry[] = [
     brandColor: '#004B8D',
     initial: 'CT',
     founded: 2002,
+    ticker: '068270',
   },
   {
     id: 'amorepacific',
@@ -182,5 +200,6 @@ export const logos: LogoEntry[] = [
     brandColor: '#E4002B',
     initial: 'AP',
     founded: 1945,
+    ticker: '090430',
   },
 ];
