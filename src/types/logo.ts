@@ -12,13 +12,20 @@ export interface LogoEntry {
   id: string;
   nameKo: string;
   nameEn: string;
-  category: Category;
+  category: Category | string;  // D1 may use different category values
   brandColor: string;
   initial: string;
   initialColor?: string;
   founded: number;
   ticker?: string;
   imageUrl?: string;
+}
+
+export function getCategoryColor(category: string): string {
+  return (
+    CATEGORY_COLORS[category as Category] ??
+    'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
+  );
 }
 
 export const CATEGORIES: Category[] = [
