@@ -1,6 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import type { LogoEntry } from '@/types/logo';
 
-export default function LogoMark({ entry }: { entry: LogoEntry }) {
+function SvgMark({ entry }: { entry: LogoEntry }) {
   const textColor = entry.initialColor ?? '#ffffff';
   const fontSize =
     entry.initial.length > 2 ? 18 : entry.initial.length === 2 ? 24 : 30;
@@ -37,4 +40,26 @@ export default function LogoMark({ entry }: { entry: LogoEntry }) {
       </text>
     </svg>
   );
+}
+
+export default function LogoMark({ entry }: { entry: LogoEntry }) {
+  const [imgError, setImgError] = useState(false);
+
+  if (entry.imageUrl && !imgError) {
+    return (
+      <div className="w-[72px] h-[72px] rounded-2xl overflow-hidden flex items-center justify-center bg-white dark:bg-white/5 border border-[var(--card-border)]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={entry.imageUrl}
+          alt={entry.nameKo}
+          width={64}
+          height={64}
+          className="object-contain w-16 h-16"
+          onError={() => setImgError(true)}
+        />
+      </div>
+    );
+  }
+
+  return <SvgMark entry={entry} />;
 }

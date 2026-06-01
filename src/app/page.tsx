@@ -1,8 +1,25 @@
-import { logos } from '@/data/logos';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { CATEGORIES } from '@/types/logo';
+import { fetchLogos, staticLogos } from '@/lib/logos';
 import LogoGrid from '@/components/LogoGrid';
 
-export default function Home() {
+export default async function Home() {
+  let logos = staticLogos;
+  let fromD1 = false;
+
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    if (env.DB) {
+      const d1Logos = await fetchLogos(env.DB);
+      if (d1Logos.length > 0) {
+        logos = d1Logos;
+        fromD1 = true;
+      }
+    }
+  } catch {
+    // Fall back to static data in local dev or when D1 is not available
+  }
+
   return (
     <div className="min-h-screen bg-[var(--background)]">
       {/* Hero */}
@@ -15,7 +32,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-9 sm:pt-14 sm:pb-12">
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 px-2.5 py-1 rounded-full mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse inline-block" />
-            Brand Archive
+            {fromD1 ? 'Live Data' : 'Brand Archive'}
           </span>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] leading-tight">
             한국 기업{' '}
