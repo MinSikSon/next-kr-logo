@@ -41,7 +41,14 @@ export default function LogoCard({ entry, index = 0 }: LogoCardProps) {
           >
             {entry.category}
           </span>
-          <span className="text-xs text-[var(--muted)] shrink-0 tabular-nums">{entry.founded}</span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            {entry.ticker && (
+              <span className="text-[10px] font-mono text-[var(--muted)] bg-[var(--background)] border border-[var(--card-border)] px-1.5 py-0.5 rounded tabular-nums">
+                {entry.ticker}
+              </span>
+            )}
+            <span className="text-xs text-[var(--muted)] tabular-nums">{entry.founded}</span>
+          </div>
         </div>
       </div>
     </div>

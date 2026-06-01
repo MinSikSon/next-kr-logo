@@ -27,7 +27,7 @@ export default function SearchBar({ value, onChange, inputRef }: SearchBarProps)
       <input
         ref={inputRef}
         type="search"
-        placeholder="기업명으로 검색..."
+        placeholder="기업명 또는 종목코드로 검색..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="w-full h-10 pl-10 pr-20 rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] text-[var(--foreground)] placeholder:text-[var(--muted)] text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"

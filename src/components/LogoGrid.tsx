@@ -36,7 +36,8 @@ export default function LogoGrid({ logos }: LogoGridProps) {
     return logos.filter(
       (logo) =>
         logo.nameKo.toLowerCase().includes(q) ||
-        logo.nameEn.toLowerCase().includes(q)
+        logo.nameEn.toLowerCase().includes(q) ||
+        (logo.ticker?.toLowerCase().includes(q) ?? false)
     );
   }, [logos, searchQuery]);
 
