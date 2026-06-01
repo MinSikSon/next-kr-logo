@@ -1,5 +1,5 @@
 import type { LogoEntry } from '@/types/logo';
-import { CATEGORY_COLORS } from '@/types/logo';
+import { getCategoryColor } from '@/types/logo';
 import LogoMark from './LogoMark';
 
 interface LogoCardProps {
@@ -41,7 +41,7 @@ export default function LogoCard({ entry, index = 0, onClick }: LogoCardProps) {
           <p className="text-xs text-[var(--muted)] mt-0.5 truncate">{entry.nameEn}</p>
         </div>
         <div className="flex items-center justify-between gap-1">
-          <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full truncate ${CATEGORY_COLORS[entry.category]}`}>
+          <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full truncate ${getCategoryColor(entry.category)}`}>
             {entry.category}
           </span>
           <div className="flex items-center gap-1.5 shrink-0">
